@@ -6,7 +6,7 @@ phases:
       - echo log in to Amazon ECR...
       - aws --version
       - echo $AWS_DEFAULT_REGION
-      - $(aws ecr get-login --no-include-email --region ca-central-1)
+      - aws ecr get-login-password --region ca-central-1 | docker login --username AWS --password-stdin 899380573763.dkr.ecr.ca-central-1.amazonaws.com
       - REPOSITORY_URI=899380573763.dkr.ecr.ca-central-1.amazonaws.com/chatbot-uat
       - echo $CODEBUILD_RESOLVED_SOURCE_VERSION
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
